@@ -4,11 +4,13 @@
 
 package main
 
-import "github.com/hyperledger/fabric/core/chaincode/shim"
+import (
+    "fmt"
+    "github.com/hyperledger/fabric/core/chaincode/shim"
+)
 
 func main() {
-	err := shim.Start(new(Chaincode))
-	if err != nil {
-		panic(err)
-	}
+	 if err := shim.Start(new(Chaincode)) ; err != nil{
+	     fmt.Printf("Error starting chaincode %s" , err)
+     }
 }
