@@ -1,7 +1,3 @@
-/*
- * SPDX-License-Identifier: Apache-2.0
- */
-
 package main
 
 import (
@@ -17,15 +13,14 @@ type Chaincode struct {
 
 // Init is called when the chaincode is instantiated by the blockchain network.
 func (cc *Chaincode) Init(stub shim.ChaincodeStubInterface) sc.Response {
-
 	args := stub.GetStringArgs()
-	if len(args) != 2 {
-
-		return shim.Error("Incorrect Arguments , Expecting a key Pair Value")
-	}
-	err := stub.PutState(args[0], []byte(args[1]))
+	fmt.Println("I am argument 1", args[0])
+	// if len(args) <= 2 {
+	// 	return shim.Error("Incorrect Arguments , Expecting a key Pair Value")
+	// }
+	err := stub.PutState(args[1], []byte(args[2]))
 	if err != nil {
-		shim.Error(fmt.Sprintf("Failed to Create Asset: %s", args[0]))
+		shim.Error(fmt.Sprintf("Failed to Create Asset: %s", args[1]))
 	}
 	return shim.Success(nil)
 }
